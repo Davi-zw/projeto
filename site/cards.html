@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meu Site — Cards</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Meu<span>Site</span></a>
+      <nav class="nav">
+        <a class="nav__link" href="index.html">Início</a>
+        <a class="nav__link nav__link--active" aria-current="page" href="cards.html">Produtos/Serviços</a>
+        <a class="nav__link" href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="section-title">Nossos produtos e serviços</h1>
+
+    <div class="cards-grid">
+      <!-- CARD 1 -->
+      <article class="card card--hoverable" id="card-destaque">
+        <img class="card__img" src="https://picsum.photos/seed/prod1/600/400" alt="Imagem ilustrativa do produto 1">
+        <div class="card__body">
+          <h2 class="card__title">Produto 1</h2>
+          <p class="card__text">Descrição breve do produto com benefícios principais.</p>
+          <div class="card__actions">
+            <a class="btn btn--primary" href="#">Comprar</a>
+            <a class="btn btn--ghost" href="#">Detalhes</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 2 -->
+      <article class="card card--hoverable">
+        <img class="card__img" src="https://picsum.photos/seed/prod2/600/400" alt="Imagem ilustrativa do produto 2">
+        <div class="card__body">
+          <h2 class="card__title">Serviço A</h2>
+          <p class="card__text">Atendimento especializado e resultados comprovados.</p>
+          <div class="card__actions">
+            <a class="btn btn--primary" href="#">Contratar</a>
+            <a class="btn btn--ghost" href="#">Saber mais</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARD 3 -->
+      <article class="card card--hoverable">
+        <img class="card__img" src="https://picsum.photos/seed/prod3/600/400" alt="Imagem ilustrativa do produto 3">
+        <div class="card__body">
+          <h2 class="card__title">Consultoria</h2>
+          <p class="card__text">Planejamento e execução de ponta a ponta.</p>
+          <div class="card__actions">
+            <a class="btn btn--primary" href="#">Agendar</a>
+            <a class="btn btn--ghost" href="#">Detalhes</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>&copy; <span id="ano-atual"></span> MeuSite.</small>
+      <a class="to-top" href="#">↑ topo</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('ano-atual').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

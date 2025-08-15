@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meu Site — Início</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body id="topo">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Meu<span>Site</span></a>
+      <nav class="nav">
+        <a class="nav__link" href="index.html">Início</a>
+        <a class="nav__link" href="cards.html">Produtos/Serviços</a>
+        <a class="nav__link" href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container hero__inner">
+        <h1 class="hero__title">Soluções simples, resultados incríveis.</h1>
+        <p class="hero__subtitle">
+          Um site de exemplo com três páginas, CSS externo e boas práticas de HTML semântico.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="cards.html">Ver cartões</a>
+          <a class="btn btn--ghost" href="contato.html">Falar com a gente</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="features container">
+      <h2 class="section-title">Por que escolher a gente?</h2>
+      <ul class="feature-list">
+        <li class="feature">
+          <h3 class="feature__title">Performance</h3>
+          <p class="feature__text">Código leve e otimizado para carregar rápido.</p>
+        </li>
+        <li class="feature">
+          <h3 class="feature__title">Acessibilidade</h3>
+          <p class="feature__text">Estrutura semântica e navegação por teclado.</p>
+        </li>
+        <li class="feature">
+          <h3 class="feature__title">Escalabilidade</h3>
+          <p class="feature__text">Estilos organizados com classes e ids.</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>&copy; <span id="ano-atual"></span> MeuSite. Todos os direitos reservados.</small>
+      <a class="to-top" href="#topo">↑ topo</a>
+    </div>
+  </footer>
+
+  <script>
+    // Só para atualizar o ano automaticamente (sem dependências)
+    document.getElementById('ano-atual').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

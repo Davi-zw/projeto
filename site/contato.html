@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Meu Site — Contato</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Meu<span>Site</span></a>
+      <nav class="nav">
+        <a class="nav__link" href="index.html">Início</a>
+        <a class="nav__link" href="cards.html">Produtos/Serviços</a>
+        <a class="nav__link nav__link--active" aria-current="page" href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="section-title">Fale com a gente</h1>
+
+    <form class="form" id="form-contato" action="#" method="post" novalidate>
+      <div class="form__row">
+        <label class="form__label" for="nome">Nome completo</label>
+        <input class="form__input" type="text" id="nome" name="nome" placeholder="Seu nome" required minlength="3" />
+        <small class="form__hint">Obrigatório. Mínimo de 3 caracteres.</small>
+      </div>
+
+      <div class="form__row">
+        <label class="form__label" for="email">E-mail</label>
+        <input class="form__input" type="email" id="email" name="email" placeholder="voce@exemplo.com" required />
+        <small class="form__hint">Usaremos apenas para responder.</small>
+      </div>
+
+      <div class="form__row">
+        <label class="form__label" for="telefone">Telefone (opcional)</label>
+        <input class="form__input" type="tel" id="telefone" name="telefone" placeholder="(11) 91234-5678" pattern="^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$" />
+        <small class="form__hint">Formato aceito: (11) 91234-5678</small>
+      </div>
+
+      <div class="form__row">
+        <label class="form__label" for="assunto">Assunto</label>
+        <select class="form__input" id="assunto" name="assunto" required>
+          <option value="" selected disabled>Selecione...</option>
+          <option value="orcamento">Orçamento</option>
+          <option value="suporte">Suporte</option>
+          <option value="outros">Outros</option>
+        </select>
+      </div>
+
+      <fieldset class="form__row">
+        <legend class="form__label">Preferência de contato</legend>
+        <label class="check">
+          <input type="radio" name="preferencia" value="email" required> E-mail
+        </label>
+        <label class="check">
+          <input type="radio" name="preferencia" value="telefone"> Telefone
+        </label>
+      </fieldset>
+
+      <div class="form__row">
+        <label class="form__label" for="mensagem">Mensagem</label>
+        <textarea class="form__input form__textarea" id="mensagem" name="mensagem" rows="5" required minlength="10" placeholder="Conte-nos em detalhes..."></textarea>
+      </div>
+
+      <div class="form__row">
+        <label class="check">
+          <input type="checkbox" id="lgpd" required>
+          Concordo com os termos e política de privacidade.
+        </label>
+      </div>
+
+      <div class="form__actions">
+        <button class="btn btn--primary" type="submit">Enviar</button>
+        <button class="btn btn--ghost" type="reset">Limpar</button>
+      </div>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>&copy; <span id="ano-atual"></span> MeuSite.</small>
+      <a class="to-top" href="#">↑ topo</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('ano-atual').textContent = new Date().getFullYear();
+
+    // Feedback básico usando validação nativa do HTML5:
+    document.getElementById('form-contato').addEventListener('submit', function(e){
+      if(!this.checkValidity()){
+        e.preventDefault();
+        alert('Por favor, corrija os campos destacados antes de enviar.');
+      }
+    });
+  </script>
+</body>
+</html>
+styles.css (CSS externo com classes, ids e pseudo-classes)
+css
+Copiar
+Editar
+/* ===== Variáveis e Reset ===== */
+:root{
+  --bg: #0f172a;
+  --panel: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --primary: #22c55e;
+  --primary-strong: #16a34a;
+  --border: #1f2937;
+  --ring: #34d39955;
+  --shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin: 0;
+  background: linear-gradient(180deg, #0b1220, var(--bg));
+  color: var(--text);
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* ===== Layout base ===== */
+.container{
+  width: min(1100px, 92vw);
+  margin-inline: auto;
+}
+
+.site-header{
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(15, 23, 42, .7);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner{
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .75rem 0;
+}
+
+.brand{
+  font-weight: 800; letter-spacing: .3px; text-decoration: none; color: var(--text);
+  font-size: 1.25rem;
+}
+.brand span{ color: var(--primary); }
+
+.nav { display: flex; gap: .75rem; }
+.nav__link{
+  text-decoration: none;
+  color: var(--muted);
+  padding: .5rem .8rem;
+  border-radius: .6rem;
+  transition: transform .15s ease, background .15s ease, color .15s ease;
+}
+/* pseudo-classes em links */
+.nav__link:hover{ background: #0b1324; color: var(--text); }
+.nav__link:active{ transform: translateY(1px) scale(.98); }
+.nav__link:focus{ outline: 2px solid var(--ring); outline-offset: 2px; }
+.nav__link--active,
+.nav__link[aria-current="page"]{ color: var(--text); background: #0b1324; }
+
+/* ===== Hero (usa um ID) ===== */
+#hero.hero{
+  padding: 5rem 0 3.5rem;
+  background:
+    radial-gradient(80rem 40rem at 20% -10%, rgba(34,197,94,.15), transparent 60%),
+    radial-gradient(70rem 50rem at 120% 10%, rgba(59,130,246,.12), transparent 60%);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.hero__inner{ text-align: center; }
+.hero__title{ font-size: clamp(1.8rem, 3.5vw, 3rem); margin: 0 0 .5rem; }
+.hero__subtitle{ margin: 0 auto 1.25rem; max-width: 60ch; color: var(--muted); }
+.hero__actions{ display: inline-flex; gap: .75rem; }
+
+/* ===== Botões ===== */
+.btn{
+  display: inline-block;
+  padding: .7rem 1rem;
+  border-radius: .7rem;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  background: #0b1324;
+  color: var(--text);
+  transition: transform .15s ease, filter .15s ease, background .15s ease, border-color .15s ease;
+}
+.btn:focus{ outline: 2px solid var(--ring); outline-offset: 2px; }
+.btn:hover{ filter: brightness(1.05); }
+.btn:active{ transform: translateY(1px) scale(.98); }
+
+.btn--primary{
+  background: linear-gradient(180deg, var(--primary), var(--primary-strong));
+  border-color: transparent;
+}
+.btn--ghost{
+  background: transparent;
+}
+
+/* ===== Seções ===== */
+.section-title{
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  margin: 2rem 0 1rem;
+}
+
+.features{ padding-bottom: 2.5rem; }
+.feature-list{
+  display: grid; gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  padding: 0; list-style: none; margin: 1rem 0 0;
+}
+.feature{
+  background: #0b1324;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.feature__title{ margin: 0 0 .3rem; }
+
+/* ===== Cards ===== */
+.cards-grid{
+  display: grid; gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  margin: 1.5rem 0 3rem;
+}
+.card{
+  background: #0b1324;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  overflow: clip;
+  display: flex; flex-direction: column;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card__img{
+  width: 100%; height: 180px; object-fit: cover; display: block;
+}
+.card__body{ padding: 1rem; }
+.card__title{ margin: 0 0 .35rem; }
+.card__text{ color: var(--muted); margin: 0 0 .75rem; }
+.card__actions{ display: flex; gap: .5rem; }
+
+.card--hoverable:hover{
+  transform: translateY(-3px);
+  border-color: #2b3850;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+/* destacar um card pelo ID */
+#card-destaque{ outline: 2px dashed #2b3850; outline-offset: -8px; }
+
+/* ===== Formulários ===== */
+.form{ margin: 1rem 0 3rem; }
+.form__row{ display: grid; gap: .4rem; margin-bottom: 1rem; }
+.form__label{ font-weight: 600; }
+.form__input{
+  background: #0b1324;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: .6rem;
+  padding: .7rem .8rem;
+}
+.form__textarea{ resize: vertical; min-height: 130px; }
+.form__hint{ color: var(--muted); font-size: .9rem; }
+
+.check{ display: inline-flex; gap: .5rem; align-items: center; margin-right: 1rem; }
+
+/* pseudo-classes de formulário */
+.form__input::placeholder{ color: #74829a; }              /* pseudo-elemento extra */
+.form__input:focus{ outline: 2px solid var(--ring); outline-offset: 2px; }
+.form__input:required:invalid{ border-color: #ef4444; }
+.form__input:required:valid{ border-color: #10b981; }
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible{ outline: 2px solid var(--ring); outline-offset: 2px; }
+
+/* desabilitar pointer para link já ativo */
+.nav__link--active,
+.nav__link[aria-current="page"]{ pointer-events: none; }
+
+/* ===== Rodapé ===== */
+.site-footer{
+  border-top: 1px solid var(--border);
+  padding: 1rem 0 2rem;
+  color: var(--muted);
+}
+.footer-inner{
+  display: flex; align-items: center; justify-content: space-between;
+}
+.to-top{
+  color: var(--muted); text-decoration: none; padding: .3rem .6rem; border-radius: .5rem;
+}
+.to-top:hover{ color: var(--text); background: #0b1324; }
+
+/* ===== Responsividade suave ===== */
+@media (max-width: 520px){
+  .nav{ gap: .25rem; }
+  .nav__link{ padding: .45rem .6rem; }
+  .footer-inner{ gap: .5rem; flex-direction: column; align-items: flex-start; }
+}
